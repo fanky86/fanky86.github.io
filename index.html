@@ -2,34 +2,685 @@
 <html lang="id">
 <head>
   <meta charset="UTF-8">
-  <title>Kebijakan Aplikasi fankynew</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="description" content="Portal artikel dan proyek teknologi dari Fanky86 - developer, programmer, dan penggiat perangkat lunak. Tutorial, open source, dan insight dunia coding.">
+  <meta name="author" content="Fanky86">
+  <meta name="keywords" content="programmer, perangkat lunak, coding, developer, fanky86, artikel teknologi, proyek github">
+  <title>FankyCode | Innovate, Code, Elevate</title>
+  
+  <!-- Favicon modern + fallback -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='46' fill='%233b82f6'/%3E%3Ctext x='50' y='72' font-size='60' text-anchor='middle' fill='white' font-weight='bold' font-family='Arial'%3EF%3C/text%3E%3C/svg%3E">
+  <link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='46' fill='%233b82f6'/%3E%3Ctext x='50' y='72' font-size='60' text-anchor='middle' fill='white' font-weight='bold' font-family='Arial'%3EF%3C/text%3E%3C/svg%3E">
+  
+  <!-- Google Fonts + Font Awesome 6 -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #ffffff;
+      color: #111827;
+      line-height: 1.5;
+      scroll-behavior: smooth;
+    }
+
+    .container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* Navbar */
+    .navbar {
+      background: rgba(255, 255, 255, 0.96);
+      backdrop-filter: blur(8px);
+      box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      padding: 1rem 0;
+      border-bottom: 1px solid #e5e7eb;
+    }
+
+    .nav-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .logo {
+      font-size: 1.7rem;
+      font-weight: 800;
+      background: linear-gradient(135deg, #2563eb, #1e40af);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      letter-spacing: -0.5px;
+    }
+
+    .logo span {
+      background: none;
+      color: #1e293b;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      flex-wrap: wrap;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      font-weight: 600;
+      color: #1f2937;
+      transition: color 0.2s;
+      font-size: 1rem;
+    }
+
+    .nav-links a:hover, .nav-links a.active {
+      color: #2563eb;
+    }
+
+    /* Buttons */
+    .btn-primary {
+      display: inline-block;
+      background-color: #2563eb;
+      color: white;
+      padding: 0.75rem 1.8rem;
+      border-radius: 2rem;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.2s;
+      border: none;
+      cursor: pointer;
+      font-size: 0.95rem;
+    }
+
+    .btn-primary:hover {
+      background-color: #1d4ed8;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(37,99,235,0.2);
+    }
+
+    .btn-outline {
+      background: transparent;
+      border: 2px solid #2563eb;
+      color: #2563eb;
+      padding: 0.7rem 1.6rem;
+      border-radius: 2rem;
+      font-weight: 600;
+      transition: 0.2s;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-block;
+    }
+
+    .btn-outline:hover {
+      background: #2563eb;
+      color: white;
+    }
+
+    /* Hero Section */
+    .hero {
+      padding: 5rem 0 4rem 0;
+      background: linear-gradient(to bottom, #f9fafb, #ffffff);
+    }
+
+    .hero-grid {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 3rem;
+    }
+
+    .hero-content {
+      flex: 1;
+    }
+
+    .hero-badge {
+      background: #e0e7ff;
+      color: #1e40af;
+      padding: 0.25rem 1rem;
+      border-radius: 2rem;
+      font-size: 0.85rem;
+      font-weight: 600;
+      display: inline-block;
+      margin-bottom: 1.2rem;
+    }
+
+    .hero-content h1 {
+      font-size: 3.2rem;
+      font-weight: 800;
+      line-height: 1.2;
+      letter-spacing: -1px;
+      margin-bottom: 1.2rem;
+    }
+
+    .hero-content p {
+      font-size: 1.2rem;
+      color: #4b5563;
+      max-width: 90%;
+      margin-bottom: 2rem;
+    }
+
+    .hero-avatar {
+      flex: 0.8;
+      text-align: center;
+    }
+
+    .avatar-circle {
+      background: linear-gradient(145deg, #3b82f6, #1e3a8a);
+      width: 260px;
+      height: 260px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto;
+      box-shadow: 0 20px 35px -10px rgba(0,0,0,0.15);
+    }
+
+    .avatar-circle i {
+      font-size: 7rem;
+      color: white;
+      filter: drop-shadow(2px 4px 6px rgba(0,0,0,0.2));
+    }
+
+    /* Section title */
+    .section-title {
+      font-size: 2.2rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+      text-align: center;
+    }
+
+    .section-sub {
+      text-align: center;
+      color: #4b5563;
+      margin-bottom: 3rem;
+      font-size: 1.1rem;
+    }
+
+    /* Cards grid */
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 2rem;
+      margin: 2rem 0 3rem;
+    }
+
+    .card {
+      background: #ffffff;
+      border-radius: 1.25rem;
+      overflow: hidden;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+      transition: all 0.25s ease;
+      border: 1px solid #f0f0f0;
+    }
+
+    .card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 20px 30px -12px rgba(0,0,0,0.12);
+      border-color: #d9e6ff;
+    }
+
+    .card-img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+      background: #eef2ff;
+    }
+
+    .card-content {
+      padding: 1.5rem;
+    }
+
+    .card-content h3 {
+      font-size: 1.4rem;
+      font-weight: 700;
+      margin-bottom: 0.6rem;
+    }
+
+    .card-tag {
+      display: inline-block;
+      background: #eef2ff;
+      color: #2563eb;
+      border-radius: 2rem;
+      font-size: 0.7rem;
+      font-weight: 600;
+      padding: 0.2rem 0.8rem;
+      margin-bottom: 0.8rem;
+    }
+
+    .card-content p {
+      color: #4b5563;
+      margin: 0.8rem 0;
+      font-size: 0.95rem;
+    }
+
+    .card-link {
+      margin-top: 1rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-weight: 600;
+      color: #2563eb;
+      text-decoration: none;
+      margin-right: 1rem;
+    }
+
+    /* Contact form */
+    .contact-section {
+      background: #f9fafb;
+      padding: 4rem 0;
+      margin-top: 3rem;
+      border-radius: 2rem;
+    }
+
+    .contact-wrapper {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 3rem;
+      margin-top: 2rem;
+    }
+
+    .contact-info {
+      flex: 1;
+    }
+
+    .contact-info h3 {
+      font-size: 1.7rem;
+      margin-bottom: 1rem;
+    }
+
+    .info-item {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin: 1.5rem 0;
+    }
+
+    .info-item i {
+      font-size: 1.5rem;
+      color: #2563eb;
+      width: 40px;
+    }
+
+    .info-item a {
+      color: #1f2937;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .info-item a:hover {
+      color: #2563eb;
+      text-decoration: underline;
+    }
+
+    .contact-form {
+      flex: 1.2;
+      background: white;
+      padding: 2rem;
+      border-radius: 1.5rem;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+    }
+
+    .form-group {
+      margin-bottom: 1.2rem;
+    }
+
+    .form-group input, .form-group textarea {
+      width: 100%;
+      padding: 0.9rem 1rem;
+      border: 1px solid #e2e8f0;
+      border-radius: 1rem;
+      font-family: inherit;
+      transition: 0.2s;
+    }
+
+    .form-group input:focus, .form-group textarea:focus {
+      outline: none;
+      border-color: #3b82f6;
+      box-shadow: 0 0 0 3px rgba(59,130,246,0.2);
+    }
+
+    /* Footer */
+    footer {
+      background: #111827;
+      color: #cbd5e1;
+      padding: 2.5rem 0;
+      margin-top: 3rem;
+    }
+
+    .footer-content {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+      align-items: center;
+    }
+
+    .social-links a {
+      color: #94a3b8;
+      font-size: 1.4rem;
+      margin-left: 1.2rem;
+      transition: color 0.2s;
+    }
+
+    .social-links a:hover {
+      color: #3b82f6;
+    }
+
+    @media (max-width: 768px) {
+      .hero-content h1 {
+        font-size: 2.4rem;
+      }
+      .nav-container {
+        flex-direction: column;
+      }
+      .hero-grid {
+        flex-direction: column-reverse;
+        text-align: center;
+      }
+      .hero-content p {
+        max-width: 100%;
+      }
+      .avatar-circle {
+        width: 200px;
+        height: 200px;
+      }
+      .avatar-circle i {
+        font-size: 5rem;
+      }
+    }
+  </style>
 </head>
 <body>
-  <h1>Kebijakan Privasi</h1>
-  <p>Aplikasi <b>fankynew</b> menghormati privasi pengguna.</p>
 
-  <h2>Data yang Dikumpulkan</h2>
-  <p>Aplikasi ini dapat mengakses informasi dasar profil Facebook seperti nama dan email.</p>
+<nav class="navbar">
+  <div class="container nav-container">
+    <div class="logo">Fanky<span>Code</span></div>
+    <div class="nav-links">
+      <a href="#home" class="nav-link active">Home</a>
+      <a href="#articles" class="nav-link">Artikel</a>
+      <a href="#projects" class="nav-link">Proyek</a>
+      <a href="#contact" class="nav-link">Kontak</a>
+    </div>
+  </div>
+</nav>
 
-  <h2>Penggunaan Data</h2>
-  <p>Data digunakan hanya untuk keperluan autentikasi dan layanan aplikasi.</p>
+<main>
+  <!-- Home Section -->
+  <section id="home" class="hero">
+    <div class="container hero-grid">
+      <div class="hero-content">
+        <span class="hero-badge"><i class="fas fa-code"></i> Full-stack dev & tech writer</span>
+        <h1>Kode. Kreasi. <br>Wawasan Perangkat Lunak.</h1>
+        <p>Halo! Saya Fanky — programmer, builder, dan penulis teknologi. Jelajahi artikel, proyek open-source, dan insight seputar dunia developer.</p>
+        <a href="#contact" class="btn-primary"><i class="fas fa-paper-plane"></i> Hubungi Saya</a>
+        <a href="#projects" class="btn-outline" style="margin-left: 12px;"><i class="fab fa-github"></i> Lihat Proyek</a>
+      </div>
+      <div class="hero-avatar">
+        <div class="avatar-circle">
+          <i class="fas fa-laptop-code"></i>
+        </div>
+      </div>
+    </div>
+  </section>
 
-  <h2>Penghapusan Data</h2>
-  <p>Jika ingin menghapus data, silakan kirim email ke:</p>
-  <p><b>pemberantasakundewasa@gmail.com</b></p>
+  <!-- Artikel Section -->
+  <section id="articles" class="container" style="padding: 4rem 0;">
+    <h2 class="section-title">📄 Artikel & Wawasan</h2>
+    <div class="section-sub">Tren perangkat lunak, arsitektur kode, dan tips produktivitas dari Fanky</div>
+    <div class="cards-grid">
+      <!-- Artikel 1 -->
+      <div class="card">
+        <img class="card-img" src="https://picsum.photos/id/0/400/220" alt="coding laptop" loading="lazy">
+        <div class="card-content">
+          <span class="card-tag"><i class="fab fa-react"></i> Frontend</span>
+          <h3>React 19: Yang Baru di 2025</h3>
+          <p>Fitur terbaru compiler React, server components, dan bagaimana meningkat performa aplikasi modern.</p>
+          <a href="https://linktr.ee/fanky.aja" target="_blank" class="card-link">Baca selengkapnya <i class="fas fa-arrow-right"></i></a>
+        </div>
+      </div>
+      <!-- Artikel 2 -->
+      <div class="card">
+        <img class="card-img" src="https://picsum.photos/id/26/400/220" alt="python dev" loading="lazy">
+        <div class="card-content">
+          <span class="card-tag"><i class="fab fa-python"></i> Backend</span>
+          <h3>Optimasi API dengan FastAPI</h3>
+          <p>Praktik terbaik asynchronous endpoint, dependency injection, dan dokumentasi interaktif.</p>
+          <a href="https://linktr.ee/fanky.aja" target="_blank" class="card-link">Baca selengkapnya <i class="fas fa-arrow-right"></i></a>
+        </div>
+      </div>
+      <!-- Artikel 3 -->
+      <div class="card">
+        <img class="card-img" src="https://picsum.photos/id/91/400/220" alt="devops tools" loading="lazy">
+        <div class="card-content">
+          <span class="card-tag"><i class="fas fa-cloud"></i> DevOps</span>
+          <h3>CI/CD Pipeline dari Nol dengan GitHub Actions</h3>
+          <p>Automatisasi testing, build, dan deploy ke server production hanya dalam 20 menit.</p>
+          <a href="https://linktr.ee/fanky.aja" target="_blank" class="card-link">Baca selengkapnya <i class="fas fa-arrow-right"></i></a>
+        </div>
+      </div>
+    </div>
+    <div class="cards-grid" style="margin-top: -1rem;">
+      <div class="card">
+        <img class="card-img" src="https://picsum.photos/id/1/400/220" alt="AI engineer" loading="lazy">
+        <div class="card-content">
+          <span class="card-tag"><i class="fas fa-microchip"></i> AI/ML</span>
+          <h3>LLM Lokal untuk Developer</h3>
+          <p>Menjalankan model AI seperti Llama 3 & Ollama di laptop Anda: panduan praktis.</p>
+          <a href="https://linktr.ee/fanky.aja" target="_blank" class="card-link">Baca selengkapnya <i class="fas fa-arrow-right"></i></a>
+        </div>
+      </div>
+      <div class="card">
+        <img class="card-img" src="https://picsum.photos/id/155/400/220" alt="database" loading="lazy">
+        <div class="card-content">
+          <span class="card-tag"><i class="fas fa-database"></i> Database</span>
+          <h3>PostgreSQL vs. MongoDB: Kapan Memilih?</h3>
+          <p>Analisis performa, skema data, dan skenario penggunaan untuk arsitektur modern.</p>
+          <a href="https://linktr.ee/fanky.aja" target="_blank" class="card-link">Baca selengkapnya <i class="fas fa-arrow-right"></i></a>
+        </div>
+      </div>
+    </div>
+  </section>
 
-  <hr>
+  <!-- Projects Section -->
+  <section id="projects" class="container" style="padding: 2rem 0 4rem 0;">
+    <h2 class="section-title">🚀 Proyek Unggulan</h2>
+    <div class="section-sub">Open source & eksperimen inovatif dari fanky86</div>
+    <div class="cards-grid">
+      <div class="card">
+        <img class="card-img" src="https://picsum.photos/id/106/400/220" alt="project dashboard" loading="lazy">
+        <div class="card-content">
+          <h3>InsightFlow Analytics</h3>
+          <p>Dashboard analitik real-time untuk startup. Stack: Next.js, Tailwind, Chart.js, Prisma.</p>
+          <a href="https://linktr.ee/fanky.aja" target="_blank" class="card-link">Demo <i class="fas fa-external-link-alt"></i></a>
+          <a href="https://github.com/fanky86" target="_blank" class="card-link">GitHub <i class="fab fa-github"></i></a>
+        </div>
+      </div>
+      <div class="card">
+        <img class="card-img" src="https://picsum.photos/id/20/400/220" alt="collab tool" loading="lazy">
+        <div class="card-content">
+          <h3>DevCollab Hub</h3>
+          <p>Platform kolaborasi code review dan pair programming dengan WebRTC & Socket.io.</p>
+          <a href="https://linktr.ee/fanky.aja" target="_blank" class="card-link">Demo <i class="fas fa-external-link-alt"></i></a>
+          <a href="https://github.com/fanky86" target="_blank" class="card-link">GitHub <i class="fab fa-github"></i></a>
+        </div>
+      </div>
+      <div class="card">
+        <img class="card-img" src="https://picsum.photos/id/169/400/220" alt="automation" loading="lazy">
+        <div class="card-content">
+          <h3>AutoDoc CLI</h3>
+          <p>Alat baris perintah berbasis Python yang membuat dokumentasi kode otomatis dari docstring.</p>
+          <a href="https://linktr.ee/fanky.aja" target="_blank" class="card-link">Demo <i class="fas fa-external-link-alt"></i></a>
+          <a href="https://github.com/fanky86" target="_blank" class="card-link">GitHub <i class="fab fa-github"></i></a>
+        </div>
+      </div>
+    </div>
+    <div style="text-align: center; margin-top: 1rem;">
+      <a href="https://github.com/fanky86" target="_blank" class="btn-outline"><i class="fab fa-github"></i> Lihat Semua Repository</a>
+    </div>
+  </section>
 
-  <h1>Ketentuan Layanan</h1>
-  <p>Dengan menggunakan aplikasi <b>fankynew</b>, pengguna menyetujui ketentuan berikut:</p>
-  <ul>
-    <li>Tidak menyalahgunakan layanan</li>
-    <li>Tidak melakukan aktivitas ilegal</li>
-  </ul>
+  <!-- Contact Section -->
+  <section id="contact" class="contact-section">
+    <div class="container">
+      <h2 class="section-title">📬 Mari Terhubung</h2>
+      <div class="section-sub">Ada pertanyaan, kolaborasi, atau sekadar ngobrol teknologi? Kirim pesan atau temukan saya di sosial media.</div>
+      <div class="contact-wrapper">
+        <div class="contact-info">
+          <h3>Bicarakan ide Anda</h3>
+          <p>Saya merespon dalam 1-2 hari kerja. Terbuka untuk freelance, open source, atau mentoring.</p>
+          <div class="info-item">
+            <i class="fas fa-envelope"></i>
+            <span>radenmanis123@gmail.com</span>
+          </div>
+          <div class="info-item">
+            <i class="fab fa-instagram"></i>
+            <a href="https://instagram.com/fannjha" target="_blank">@fannjha</a>
+          </div>
+          <div class="info-item">
+            <i class="fab fa-tiktok"></i>
+            <a href="https://tiktok.com/@fanky.aja" target="_blank">@fanky.aja</a>
+          </div>
+          <div class="info-item">
+            <i class="fab fa-github"></i>
+            <a href="https://github.com/fanky86" target="_blank">fanky86</a>
+          </div>
+          <div class="info-item">
+            <i class="fas fa-tree"></i>
+            <a href="https://linktr.ee/fanky.aja" target="_blank">linktr.ee/fanky.aja</a>
+          </div>
+        </div>
+        <div class="contact-form">
+          <form id="real-contact-form">
+            <div class="form-group">
+              <input type="text" id="name" placeholder="Nama lengkap" required>
+            </div>
+            <div class="form-group">
+              <input type="email" id="email" placeholder="Alamat email" required>
+            </div>
+            <div class="form-group">
+              <textarea rows="4" id="message" placeholder="Tulis pesan anda ..." required></textarea>
+            </div>
+            <button type="submit" class="btn-primary" style="width: 100%;"><i class="fas fa-paper-plane"></i> Kirim Pesan</button>
+            <p style="font-size: 0.75rem; margin-top: 1rem; text-align: center; color: #6c757d;">Pesan akan dikirim langsung ke email saya (radenmanis123@gmail.com)</p>
+          </form>
+          <div id="form-status" style="margin-top: 1rem; text-align: center; font-weight: 500;"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
 
-  <hr>
+<footer>
+  <div class="container footer-content">
+    <div>© 2025 FankyCode | Built dengan <i class="fas fa-heart" style="color:#ef4444;"></i> untuk komunitas developer</div>
+    <div class="social-links">
+      <a href="https://instagram.com/fannjha" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+      <a href="https://tiktok.com/@fanky.aja" target="_blank" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+      <a href="https://github.com/fanky86" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
+      <a href="https://linktr.ee/fanky.aja" target="_blank" aria-label="Linktree"><i class="fas fa-link"></i></a>
+    </div>
+  </div>
+</footer>
 
-  <h1>Data Deletion</h1>
-  <p>Pengguna dapat meminta penghapusan data melalui email yang tertera di atas.</p>
+<script>
+  // Active nav link on scroll
+  const sections = document.querySelectorAll('section');
+  const navLinks = document.querySelectorAll('.nav-link');
+
+  function updateActiveSection() {
+    let current = '';
+    const scrollPos = window.scrollY + 120;
+    sections.forEach(section => {
+      const sectionTop = section.offsetTop;
+      const sectionHeight = section.clientHeight;
+      if (scrollPos >= sectionTop && scrollPos < sectionTop + sectionHeight) {
+        current = section.getAttribute('id');
+      }
+    });
+    navLinks.forEach(link => {
+      link.classList.remove('active');
+      if (link.getAttribute('href') === `#${current}`) {
+        link.classList.add('active');
+      }
+    });
+  }
+
+  window.addEventListener('scroll', updateActiveSection);
+  window.addEventListener('load', updateActiveSection);
+
+  // Smooth scroll for nav
+  navLinks.forEach(link => {
+    link.addEventListener('click', function(e) {
+      e.preventDefault();
+      const targetId = this.getAttribute('href').substring(1);
+      const targetSection = document.getElementById(targetId);
+      if (targetSection) {
+        targetSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    });
+  });
+
+  // FORM SUBMIT KIRIM KE EMAIL REAL menggunakan FormSubmit.co AJAX
+  const form = document.getElementById('real-contact-form');
+  const statusDiv = document.getElementById('form-status');
+
+  form.addEventListener('submit', async function(e) {
+    e.preventDefault();
+    const name = document.getElementById('name').value.trim();
+    const email = document.getElementById('email').value.trim();
+    const message = document.getElementById('message').value.trim();
+
+    if (!name || !email || !message) {
+      statusDiv.innerHTML = '<span style="color:#e11d48;">⚠️ Semua field harus diisi!</span>';
+      return;
+    }
+
+    statusDiv.innerHTML = '<span style="color:#2563eb;"><i class="fas fa-spinner fa-pulse"></i> Mengirim pesan...</span>';
+
+    // Gunakan FormSubmit.co endpoint gratis dengan method POST
+    const formData = new FormData();
+    formData.append('name', name);
+    formData.append('email', email);
+    formData.append('message', message);
+    formData.append('_subject', `Pesan baru dari ${name} via FankyCode`);
+    formData.append('_captcha', 'false');
+
+    try {
+      const response = await fetch('https://formsubmit.co/ajax/radenmanis123@gmail.com', {
+        method: 'POST',
+        body: formData
+      });
+      const result = await response.json();
+      if (response.ok) {
+        statusDiv.innerHTML = '<span style="color:#16a34a;">✅ Pesan berhasil dikirim! Saya akan segera merespon.</span>';
+        form.reset();
+        setTimeout(() => {
+          statusDiv.innerHTML = '';
+        }, 5000);
+      } else {
+        throw new Error('Gagal mengirim');
+      }
+    } catch (error) {
+      statusDiv.innerHTML = '<span style="color:#e11d48;">❌ Gagal mengirim pesan. Silakan coba lagi atau hubungi langsung via email.</span>';
+      console.error(error);
+    }
+  });
+</script>
 </body>
 </html>
